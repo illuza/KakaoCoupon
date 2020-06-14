@@ -3,9 +3,11 @@ package kr.misa.kakao_coupon.controller;
 import kr.misa.kakao_coupon.model.Coupon;
 import kr.misa.kakao_coupon.service.CouponService;
 import kr.misa.kakao_coupon.util.Allocated;
+import kr.misa.kakao_coupon.util.ReadCsv;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +18,8 @@ public class KakaoCouponController {
 
     @Autowired
     private CouponService couponService;
+
+    private ReadCsv readCsv;
 
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(value = "/random/{N}", method = RequestMethod.POST, consumes = "application/json; charset=UTF-8")
@@ -56,5 +60,11 @@ public class KakaoCouponController {
     @RequestMapping(value = "/expired_today.do", method = RequestMethod.GET)
     public List<Coupon> queryExpiredToday() {
         return couponService.queryExpiredToday();
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(value = "/csv_upload.do", method = RequestMethod.POST)
+    public void uploadByCSV(@RequestParam("file") MultipartFile multipartFile) {
+        readCsv.perform();
     }
 }

@@ -26,10 +26,17 @@
 
 + 언뜻 봐서는 Random을 이용해야할 것 같지만 쿠폰 ID는 굳이 무작위 선택이 아닌 앞에서부터 하나씩 배정해도 괜찮다
 + OS의 메모리 관리 파트에서 Heap 영역에서 이루어지는 동적 할당 개념을 참조 
+````
     struct Block {
         boolean bUsed;  //해당 메모리 사용 여부
         Integer iSize;  //얼마만큼 사용하는지 (또는, 얼마만큼 비어있는지)
     }
+
+````
+
+- 10만개 이상 벌크 csv Import 기능
+
++ CsvToBean이라는 library를 사용
 
 
 

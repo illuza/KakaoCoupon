@@ -17,9 +17,7 @@ import java.nio.file.Paths;
 import java.util.List;
 
 public class ReadCsv {
-    private String filename = "a.csv";
-
-    public List<Coupon> perform() {
+    public List<Coupon> perform(final String filename) {
         List<Coupon> readCoupons = null;
         Path myPath = Paths.get(filename);
 
